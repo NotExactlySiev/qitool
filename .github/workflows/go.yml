@@ -55,18 +55,6 @@ jobs:
         path: "translate"
         archive: false
         if-no-files-found: error
-      
-    # - name: Build Codec Linux
-    #   run: go build -v ./cmd/codec
-    #   env:
-    #     GOARCH: amd64
-    #     GOOS: linux
-
-    # - name: Build Codec Windows
-    #   run: go build -v ./cmd/codec
-    #   env:
-    #     GOARCH: amd64
-    #     GOOS: windows
 
   create-release:
     name: Create Release
