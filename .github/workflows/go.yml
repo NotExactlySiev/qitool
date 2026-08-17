@@ -32,7 +32,7 @@ jobs:
         path: "translate.exe"
         archive: false
         if-no-files-found: error
-      
+
   translate-linux:
     runs-on: ubuntu-latest
     steps:
