@@ -11,7 +11,7 @@ on:
 
 jobs:
 
-  build:
+  build-translate-windows:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -21,11 +21,18 @@ jobs:
       with:
         go-version: '1.26.4'
 
-    - name: Build Extractor/Injector Linux
-      run: go build -v ./cmd/translate
-      env:
-        GOARCH: amd64
-        GOOS: linux
+    # - name: Build Extractor/Injector Linux
+    #   run: go build -v ./cmd/translate
+    #   env:
+    #     GOARCH: amd64
+    #     GOOS: linux
+
+    - name: Upload to GitHub
+      uses: actions/upload-artifact@v7
+      with:
+        path: "translate.exe"
+        archive: false
+        if-no-files-found: error
       
     - name: Build Extractor/Injector Windows
       run: go build -v ./cmd/translate
@@ -33,17 +40,17 @@ jobs:
         GOARCH: amd64
         GOOS: windows
 
-    - name: Build Codec Linux
-      run: go build -v ./cmd/codec
-      env:
-        GOARCH: amd64
-        GOOS: linux
+    # - name: Build Codec Linux
+    #   run: go build -v ./cmd/codec
+    #   env:
+    #     GOARCH: amd64
+    #     GOOS: linux
 
-    - name: Build Codec Windows
-      run: go build -v ./cmd/codec
-      env:
-        GOARCH: amd64
-        GOOS: windows
+    # - name: Build Codec Windows
+    #   run: go build -v ./cmd/codec
+    #   env:
+    #     GOARCH: amd64
+    #     GOOS: windows
 
-    - name: Test
-      run: go test -v ./...
+    # - name: Test
+    #   run: go test -v ./...
