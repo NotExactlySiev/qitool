@@ -27,6 +27,12 @@ jobs:
     #     GOARCH: amd64
     #     GOOS: linux
 
+    - name: Build Extractor/Injector Windows
+      run: go build -v ./cmd/translate
+      env:
+        GOARCH: amd64
+        GOOS: windows
+
     - name: Upload to GitHub
       uses: actions/upload-artifact@v7
       with:
@@ -34,12 +40,6 @@ jobs:
         archive: false
         if-no-files-found: error
       
-    - name: Build Extractor/Injector Windows
-      run: go build -v ./cmd/translate
-      env:
-        GOARCH: amd64
-        GOOS: windows
-
     # - name: Build Codec Linux
     #   run: go build -v ./cmd/codec
     #   env:
